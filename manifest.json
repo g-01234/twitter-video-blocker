@@ -1,0 +1,32 @@
+{
+  "manifest_version": 3,
+  "name": "X/Twitter Video Hider",
+  "version": "1.0",
+  "description": "Hides tweets containing videos on X/Twitter",
+  "permissions": ["activeTab", "storage", "tabs"],
+  "host_permissions": ["https://twitter.com/*", "https://x.com/*"],
+  "action": {
+    "default_popup": "index.html"
+  },
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://twitter.com/*", "https://x.com/*"],
+      "js": ["browser-polyfill.min.js", "content.js"]
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["browser-polyfill.min.js"],
+      "matches": ["https://*.twitter.com/*", "https://*.x.com/*"]
+    }
+  ],
+  "icons": {
+    "128": "icons/novideo_128.png",
+    "48": "icons/novideo_48.png",
+    "16": "icons/novideo_16.png"
+  }
+}

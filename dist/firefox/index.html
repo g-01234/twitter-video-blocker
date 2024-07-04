@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>X/Twitter Video Hider</title>
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'; style-src 'self'"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>X/Twitter Video Hider</h1>
+      <div class="switch-container">
+        <span>Hide embedded videos</span>
+        <label class="switch">
+          <input type="checkbox" id="hideVideoSwitch" />
+          <span class="slider"></span>
+        </label>
+      </div>
+      <div class="switch-container">
+        <span>Only filter home timeline</span>
+        <label class="switch">
+          <input type="checkbox" id="homeOnlySwitch" />
+          <span class="slider"></span>
+        </label>
+      </div>
+    </div>
+    <script src="browser-polyfill.min.js" defer></script>
+    <script src="popup.js" defer></script>
+  </body>
+</html>

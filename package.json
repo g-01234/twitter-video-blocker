@@ -1,0 +1,14 @@
+{
+  "dependencies": {
+    "webextension-polyfill": "^0.12.0"
+  },
+  "devDependencies": {
+    "copy-webpack-plugin": "^12.0.2",
+    "webpack": "^5.92.1",
+    "webpack-cli": "^5.1.4"
+  },
+  "scripts": {
+    "build:chrome": "webpack --config build/webpack.config.chrome.js && cd dist/chrome && zip -r ../video_block_chrome.zip .",
+    "build:firefox": "webpack --config build/webpack.config.firefox.js && node build/firefoxManifestUpdate.js && cd dist/firefox && zip -r ../video_block_firefox.zip ."
+  }
+}
