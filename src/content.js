@@ -2,15 +2,26 @@ console.log("content loaded");
 
 let observer;
 
+// Broaden detection for video content within tweets.
+// X frequently changes aria-labels and wrappers, so rely on multiple markers.
+const VIDEO_SELECTORS = [
+  // Direct HTML5 video elements (covers most cases)
+  "video",
+  // Common X testids for video containers/players
+  '[data-testid="videoPlayer"]',
+  '[data-testid="videoComponent"]',
+  // Legacy aria labels
+  '[aria-label="Embedded video"]',
+  '[aria-label="Video"]'
+].join(", ");
+
 function hideTweetsWithVideos() {
   // console.log("Hiding tweets with videos");
   try {
     document
       .querySelectorAll('[data-testid="tweet"]:not([vb-blocked])')
       .forEach((tweet) => {
-        const videoElement = tweet.querySelector(
-          'video[aria-label="Embedded video"]'
-        );
+        const videoElement = tweet.querySelector(VIDEO_SELECTORS);
         if (videoElement) {
           // console.log("Video element detected");
           tweet.style.display = "none";
